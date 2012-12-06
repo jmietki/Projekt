@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<level name="Odessey">
+	<resources>
+		<image name="background" file="images/background.png" />
+		<image name="block" file="images/block.png" />
+		<image name="platform_long" file="images/platform_long.png" />
+		<image name="platform_short" file="images/platform_short.png" />
+		<image name="saw" file="images/saw.png" />
+		<image name="left_tile" file="images/left_tile.png" />
+		<image name="left_front" file="images/left_front.png" />
+		<image name="vertical_long" file="images/vertical_long.png" />
+		<image name="vertical_short" file="images/vertical_short.png" />
+		<image name="vertical_long_blur" file="images/vertical_long_blur.png" />
+	</resources>
+
+	<map>
+		<object image="background" x="0" y="0" depth="1" collision="false"/>
+		<object image="left_tile" x="-5" y="0" collision="false" />
+		<object image="left_front" x="0" y="0" depth="-2" collision="false" />
+		<object image="platform_long" x="0" y="115" />
+		<object image="platform_short" x="430" y="115" />
+		<object image="platform_long" x="650" y="250" />
+		<object image="platform_long" x="1250" y="250" />
+		<object image="saw" x="1165" y="265" name="saw1"/>
+		<object image="saw" x="1780" y="300" name="saw2"/>
+		<object image="saw" x="1780" y="500" name="saw3"/>
+
+		<object image="vertical_long_blur" x="1300" y="0" depth="-2" collision="false" />
+		<object image="vertical_long_blur" x="1300" y="214" depth="-2" collision="false" />
+		<object image="vertical_long_blur" x="1300" y="428" depth="-2" collision="false" />
+		<object image="vertical_long_blur" x="1300" y="642" depth="-2" collision="false" />
+
+		<object image="vertical_long_blur" x="2300" y="0" depth="-2" collision="false" />
+		<object image="vertical_long_blur" x="2300" y="214" depth="-2" collision="false" />
+		<object image="vertical_long_blur" x="2300" y="428" depth="-2" collision="false" />
+		<object image="vertical_long_blur" x="2300" y="642" depth="-2" collision="false" />
+
+		<object image="vertical_long_blur" x="3300" y="0" depth="-2" collision="false" />
+		<object image="vertical_long_blur" x="3300" y="214" depth="-2" collision="false" />
+		<object image="vertical_long_blur" x="3300" y="428" depth="-2" collision="false" />
+		<object image="vertical_long_blur" x="3300" y="642" depth="-2" collision="false" />
+
+	</map>
+</level>

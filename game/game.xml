@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<game>
+	<display>
+		<resolution width="1000" height="600" />
+		<fullscreen value="true" />
+	</display>
+
+	<resources>
+		<image name="player_stand_right" file="../resources/common/shank/right/stand.png"/>
+		<image name="player_stand_left" file="../resources/common/shank/left/stand.png"/>
+		<image name="player_jump_right" file="../resources/common/shank/right/jump.png"/>
+		<image name="player_jump_left" file="../resources/common/shank/left/jump.png"/>
+		<image name="muzzle_right" file="../resources/common/muzzle.png"/>
+		<image name="muzzle_left" file="../resources/common/muzzle_left.png"/>
+
+		<animation name="player_walk_right">
+			<frame file="../resources/common/shank/right/walk1.png" time="0.1"/>
+			<frame file="../resources/common/shank/right/walk2.png" time="0.1"/>
+			<frame file="../resources/common/shank/right/walk3.png" time="0.1"/>
+			<frame file="../resources/common/shank/right/walk4.png" time="0.1"/>
+			<frame file="../resources/common/shank/right/walk5.png" time="0.1"/>
+			<frame file="../resources/common/shank/right/walk6.png" time="0.1"/>
+			<frame file="../resources/common/shank/right/walk7.png" time="0.1"/>
+		</animation>
+		<animation name="player_walk_left">
+			<frame file="../resources/common/shank/left/walk1.png" time="0.1"/>
+			<frame file="../resources/common/shank/left/walk2.png" time="0.1"/>
+			<frame file="../resources/common/shank/left/walk3.png" time="0.1"/>
+			<frame file="../resources/common/shank/left/walk4.png" time="0.1"/>
+			<frame file="../resources/common/shank/left/walk5.png" time="0.1"/>
+			<frame file="../resources/common/shank/left/walk6.png" time="0.1"/>
+			<frame file="../resources/common/shank/left/walk7.png" time="0.1"/>
+		</animation>
+	</resources>
+
+	<levels>
+		<level name="Odessey" dir="../resources/levels/odessey" config="level.xml"/>
+	</levels>
+</game>
