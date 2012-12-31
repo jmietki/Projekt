@@ -22,7 +22,7 @@ Wymaga interpretera Python w wersji 2.7.3. Pod gałęzią 3.x gra nie była test
     
     	$ sudo apt-get install python
     
-2. Zainstaluj biblioteki pyglet
+2. Zainstaluj bibliotekę pyglet
     
     	$ sudo apt-get install python-pyglet
     
@@ -30,6 +30,11 @@ Wymaga interpretera Python w wersji 2.7.3. Pod gałęzią 3.x gra nie była test
 4. Nadaj uprawnienia uruchomiania dla pliku game/main.py
     
     	$ chmod +x scieżka_do_projektu/game/main.py
+
+5. Uruchom aplikacje
+		
+		$ cd scieżka_do_projektu/game/
+		$ ./main.py
     
 [Pobierz]: https://github.com/jmietki/Projekt/archive/master.zip
 
@@ -39,6 +44,19 @@ Obecnie platforma Windows nie jest wspierana.
 
 Oficjalna wersja do oceny zostanie wydana w wersji na Windows, prawdopodobnie w formie paczki .exe
 przygotowanej z pomocą py2exe.
+
+## Znane problemy
+
+Pomijając liczne problemy związane z wczesną wersją, może wystąpić problem z bardzo niską wydajnością w trybie okienkowym pod Ubuntu Unity.
+W takim przypadku należy przełączyć grę w tryb pełnoekranowy. 
+
+W pliku game/game.xml należy zmienić linijkę
+	
+		<fullscreen value="false"/>
+
+na 
+
+		<fullscreen value="true"/>
 
 
 ## Główne TO-DO
