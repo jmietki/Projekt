@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import pyglet
-from ctypes import *
+import math
 
 class PhysicalObject(pyglet.sprite.Sprite):
 	""" Klasa bazowa dla wszystkich obiektów w grze """
@@ -30,16 +30,16 @@ class PhysicalObject(pyglet.sprite.Sprite):
 		self.x += self.velocity_x*dt
 		self.y += self.velocity_y*dt
 
-	def collides_with(self, obj):
+	def collides_with_rect(self, obj):
 		""" Sprawdzanie czy obiekt koliduje z innym """
 		""" Przepisać na rect !!! """
 		
-		left1 = int(self.x - self.image_anchor_x)
-		left2 = int(obj.x - obj.image_anchor_x)
+		left1 = int(math.floor(self.fixed_x))
+		left2 = int(math.floor(obj.fixed_x))
 		right1 = left1 + self.width
 		right2 = left2 + obj.width
-		top1 = int(self.y - self.image_anchor_y)
-		top2 = int(obj.y - obj.image_anchor_y)
+		top1 = int(math.floor(self.fixed_y))
+		top2 = int(math.floor(obj.fixed_y))
 		bottom1 = top1 + self.height
 		bottom2 = top2 + obj.height
 
@@ -59,4 +59,7 @@ class PhysicalObject(pyglet.sprite.Sprite):
 	def __repr__(self):
 		""" Na portrzeby sortowania """
 		return repr((self.depth))
+
+	def on_collide(self):
+		pass
 

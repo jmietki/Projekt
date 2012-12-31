@@ -13,32 +13,45 @@
 		<image name="vertical_long_blur" file="images/vertical_long_blur.png" />
 	</resources>
 
+	<scripts>
+		<script file="scripts/logic.py" class="OdesseyLogic" main="true"/>
+	</scripts>
+
 	<map>
-		<object image="background" x="0" y="0" depth="1" collision="false"/>
-		<object image="left_tile" x="-5" y="0" collision="false" />
-		<object image="left_front" x="0" y="0" depth="-2" collision="false" />
-		<object image="platform_long" x="0" y="115" />
-		<object image="platform_short" x="430" y="115" />
-		<object image="platform_long" x="650" y="250" />
-		<object image="platform_long" x="1250" y="250" />
-		<object image="saw" x="1165" y="265" name="saw1"/>
-		<object image="saw" x="1780" y="300" name="saw2"/>
-		<object image="saw" x="1780" y="500" name="saw3"/>
+		<object image="background" x="0" y="-200" depth="20" collision="false"/>
 
-		<object image="vertical_long_blur" x="1300" y="0" depth="-2" collision="false" />
-		<object image="vertical_long_blur" x="1300" y="214" depth="-2" collision="false" />
-		<object image="vertical_long_blur" x="1300" y="428" depth="-2" collision="false" />
-		<object image="vertical_long_blur" x="1300" y="642" depth="-2" collision="false" />
+		<object image="left_tile" x="-5" y="200" collision="false" />
+		<object image="left_front" x="0" y="240" depth="-0.2" collision="false" />
 
-		<object image="vertical_long_blur" x="2300" y="0" depth="-2" collision="false" />
-		<object image="vertical_long_blur" x="2300" y="214" depth="-2" collision="false" />
-		<object image="vertical_long_blur" x="2300" y="428" depth="-2" collision="false" />
-		<object image="vertical_long_blur" x="2300" y="642" depth="-2" collision="false" />
+		<object image="platform_long"  x="0"    y="315" />
+		<object image="platform_short" x="430"  y="315" />
+		<object image="platform_long"  x="650"  y="450" />
+		<object image="saw"            x="1165" y="465" name="saw1" class="Saw"/>
+		<object image="platform_long"  x="1250" y="450" />
+		<object image="saw"            x="1970" y="465" name="saw6" class="Saw"/>
+		<object image="platform_long"  x="2250" y="450" />
 
-		<object image="vertical_long_blur" x="3300" y="0" depth="-2" collision="false" />
-		<object image="vertical_long_blur" x="3300" y="214" depth="-2" collision="false" />
-		<object image="vertical_long_blur" x="3300" y="428" depth="-2" collision="false" />
-		<object image="vertical_long_blur" x="3300" y="642" depth="-2" collision="false" />
+		<object image="saw" x="3150" y="500" name="saw2" class="Saw"/>
+		<object image="saw" x="3150" y="700" name="saw3" class="Saw"/>
 
+		<object image="platform_long" x="1750" y="120" />
+		<object image="platform_long" x="2250" y="20" />
+		<object image="saw" x="2790" y="0" name="saw4" class="Saw"/>
+		<object image="saw" x="2900" y="0" name="saw5" class="Saw"/>
+
+		<object image="platform_long" x="3250" y="450" />
+		<object image="platform_long" x="3050" y="20" />
+
+		<object image="vertical_long_blur" x="1300" y="0" depth="-0.2" collision="false" />
+		<object image="vertical_long_blur" x="1300" y="215" depth="-0.2" collision="false" />
+		<object image="vertical_long_blur" x="1300" y="430" depth="-0.2" collision="false" />
+		<object image="vertical_long_blur" x="1300" y="645" depth="-0.2" collision="false" />
+		<object image="vertical_long_blur" x="1300" y="860" depth="-0.2" collision="false" />
+
+		<object image="vertical_long_blur" x="2300" y="0" depth="-0.2" collision="false" />
+		<object image="vertical_long_blur" x="2300" y="215" depth="-0.2" collision="false" />
+		<object image="vertical_long_blur" x="2300" y="430" depth="-0.2" collision="false" />
+		<object image="vertical_long_blur" x="2300" y="645" depth="-0.2" collision="false" />
+		<object image="vertical_long_blur" x="2300" y="860" depth="-0.2" collision="false" />
 	</map>
 </level>

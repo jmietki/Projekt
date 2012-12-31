@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import xml.etree.ElementTree as elementTree
-import os.path
+
 
 class Config(object):
 	""" Klasa bazowa do wszystkich konfiguracji """
@@ -60,6 +60,17 @@ class LevelConfig(Config):
 		return objects_list
 
 
+	def get_scripts_list(self):
+
+		script_list = list()
+
+		for script in self.tree.iter('script'):
+			script_list.append(script)
+
+		return script_list
+
+	def get_scrolling_range_list(self):
+		pass
 
 class GameConfig(Config):
 	""" Klasa konfiguracyjna dla game.xml """
@@ -94,7 +105,7 @@ class ConfigReader():
 		pass
 
 	def read(self, filename):
-		tree = elementTree.parse(os.path.normpath(filename))
+		tree = elementTree.parse(filename)
 		root = tree.getroot() 
 
 		return root

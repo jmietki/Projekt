@@ -9,8 +9,9 @@ import physicalobject
 LEFT  = 0x01
 RIGHT = 0x02
 STOP  = 0x04
-IN_AIR = 0x08
-ON_GROUND = 0x16
+JUMP  = 0x08
+FALL  = 0x16
+ON_GROUND = 0x32
 
 class MuzzleEffect(pyglet.sprite.Sprite):
 	"""docstring for MuzzleEffect"""
@@ -53,13 +54,14 @@ class Player(physicalobject.PhysicalObject):
 		self.walking = STOP 
 
 		# Domyślne wartości prędkości i siły skoku
-		self.default_speed = 350
+		self.default_speed = 550
 		self.default_jump = 850
 
 		# Lista obiektów kolizyjnych
 		self.collision_objects = None
 
 		self.scale = 0.7
+		self.last_velocity_y = self.velocity_y
 
 		# muzzle effect
 		self.muzzle_right = MuzzleEffect(resources.images['muzzle_right'])
@@ -84,7 +86,7 @@ class Player(physicalobject.PhysicalObject):
 	def jump(self):
 		if self.status == ON_GROUND:
 			self.velocity_y = self.default_jump
-			self.status = IN_AIR
+			self.status = JUMP
 			self.set_image()
 
 	def land(self):
@@ -102,13 +104,24 @@ class Player(physicalobject.PhysicalObject):
 		if self.facing == RIGHT:
 			self.muzzle_right.show(self.x, self.y)
 
-	def set_image(self):
-		if self.status == IN_AIR:
-			if self.facing == RIGHT:
-				self.image = self.game_resources.images['player_jump_right']
-			else:
-				self.image = self.game_resources.images['player_jump_left']
+	def kill(self):
+		self.velocity_y = 0
+		self.velocity_x = 0
+		self.x = 100
+		self.y = 500
+		print "Kill", self.x, self.y
 
+	def set_image(self):
+		if self.status == JUMP:
+			if self.facing == RIGHT:
+				self.image = self.game_resources.animations['player_jump_right']
+			else:
+				self.image = self.game_resources.animations['player_jump_left']
+		elif self.status == FALL:
+			if self.facing == RIGHT:
+				self.image = self.game_resources.animations['player_fall_right']
+			else:
+				self.image = self.game_resources.animations['player_fall_left']
 		elif self.status == ON_GROUND and self.walking == STOP:
 			if self.facing == RIGHT:
 				self.image = self.game_resources.images['player_stand_right']
@@ -116,9 +129,9 @@ class Player(physicalobject.PhysicalObject):
 				self.image = self.game_resources.images['player_stand_left']
 		else:
 			if self.facing == RIGHT:
-				self.image = self.game_resources.animations['player_walk_right']
+				self.image = self.game_resources.animations['player_run_right']
 			else:
-				self.image = self.game_resources.animations['player_walk_left']
+				self.image = self.game_resources.animations['player_run_left']
 
 	def update(self, dt):
 
@@ -136,15 +149,15 @@ class Player(physicalobject.PhysicalObject):
 		on_gorund_flag = False
 
 		for sprite in self.collision_objects:
-			if self.collides_with(sprite):
+			if self.collides_with_rect(sprite):
 
 				# kolizja z dołu ( obiekt jest pod playerem )
 				if y >= sprite.fixed_y + sprite.height:
-					self.y = sprite.fixed_y + sprite.height
+					self.y = sprite.fixed_y + sprite.height 
 					self.velocity_y = 0
 					on_gorund_flag = True
 
-					if self.status == IN_AIR:
+					if self.status == JUMP or self.status == FALL:
 						self.status = ON_GROUND
 						self.set_image()
 
@@ -152,17 +165,20 @@ class Player(physicalobject.PhysicalObject):
 				elif y + self.height <= sprite.y:
 					self.y = sprite.fixed_y - self.height
 					self.velocity_y = 0
+				sprite.on_collide()
 
 		if not on_gorund_flag:
-			if self.status == ON_GROUND:
-				self.status = IN_AIR
+			if self.status == ON_GROUND or (self.last_velocity_y >= 0 and self.velocity_y <= 0):
+				self.status = FALL
 				self.set_image()
+
+		self.last_velocity_y = self.velocity_y
 	
 
 		self.x += self.velocity_x*dt
-
 		for sprite in self.collision_objects:
-			if self.collides_with(sprite):
+			if self.collides_with_rect(sprite):
+				
 				if x + self.width <= sprite.fixed_x:
 					self.x = sprite.fixed_x - self.width
 					self.velocity_x = 0
@@ -170,6 +186,7 @@ class Player(physicalobject.PhysicalObject):
 				elif x >= sprite.fixed_x + sprite.width:
 					self.x = sprite.fixed_x + sprite.width
 					self.velocity_x = 0 
+				sprite.on_collide()
 
 		if self.muzzle_right.visible:
 			self.muzzle_right.update(dt, self.x, self.y)

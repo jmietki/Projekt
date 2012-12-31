@@ -1,36 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <game>
 	<display>
-		<resolution width="1000" height="600" />
-		<fullscreen value="true" />
+		<resolution width="1280" height="720" />
+		<fullscreen value="false" />
 	</display>
 
 	<resources>
 		<image name="player_stand_right" file="../resources/common/shank/right/stand.png"/>
-		<image name="player_stand_left" file="../resources/common/shank/left/stand.png"/>
-		<image name="player_jump_right" file="../resources/common/shank/right/jump.png"/>
-		<image name="player_jump_left" file="../resources/common/shank/left/jump.png"/>
+		<image name="player_stand_left" file="../resources/common/shank/right/stand.png" flip="h"/>
+
 		<image name="muzzle_right" file="../resources/common/muzzle.png"/>
 		<image name="muzzle_left" file="../resources/common/muzzle_left.png"/>
 
-		<animation name="player_walk_right">
-			<frame file="../resources/common/shank/right/walk1.png" time="0.1"/>
-			<frame file="../resources/common/shank/right/walk2.png" time="0.1"/>
-			<frame file="../resources/common/shank/right/walk3.png" time="0.1"/>
-			<frame file="../resources/common/shank/right/walk4.png" time="0.1"/>
-			<frame file="../resources/common/shank/right/walk5.png" time="0.1"/>
-			<frame file="../resources/common/shank/right/walk6.png" time="0.1"/>
-			<frame file="../resources/common/shank/right/walk7.png" time="0.1"/>
+		<animation name="player_run_right">
+			<frame file="../resources/common/shank/right/run1.png" time="0.035"/>
+			<frame file="../resources/common/shank/right/run2.png" time="0.035"/>
+			<frame file="../resources/common/shank/right/run3.png" time="0.035"/>
+			<frame file="../resources/common/shank/right/run4.png" time="0.035"/>
+			<frame file="../resources/common/shank/right/run5.png" time="0.035"/>
+			<frame file="../resources/common/shank/right/run6.png" time="0.035"/>
+			<frame file="../resources/common/shank/right/run7.png" time="0.035"/>
+			<frame file="../resources/common/shank/right/run8.png" time="0.035"/>
+			<frame file="../resources/common/shank/right/run9.png" time="0.035"/>
+			<frame file="../resources/common/shank/right/run10.png" time="0.035"/>
+			<frame file="../resources/common/shank/right/run11.png" time="0.035"/>
+			<frame file="../resources/common/shank/right/run12.png" time="0.035"/>
+			<frame file="../resources/common/shank/right/run13.png" time="0.035"/>
+			<frame file="../resources/common/shank/right/run14.png" time="0.035"/>
+			<frame file="../resources/common/shank/right/run15.png" time="0.035"/>
+			<frame file="../resources/common/shank/right/run16.png" time="0.035"/>
+			<frame file="../resources/common/shank/right/run17.png" time="0.035"/>
+			<frame file="../resources/common/shank/right/run18.png" time="0.035"/>
 		</animation>
-		<animation name="player_walk_left">
-			<frame file="../resources/common/shank/left/walk1.png" time="0.1"/>
-			<frame file="../resources/common/shank/left/walk2.png" time="0.1"/>
-			<frame file="../resources/common/shank/left/walk3.png" time="0.1"/>
-			<frame file="../resources/common/shank/left/walk4.png" time="0.1"/>
-			<frame file="../resources/common/shank/left/walk5.png" time="0.1"/>
-			<frame file="../resources/common/shank/left/walk6.png" time="0.1"/>
-			<frame file="../resources/common/shank/left/walk7.png" time="0.1"/>
+
+		<animation name="player_run_left">
+			<frame file="../resources/common/shank/right/run1.png" time="0.035" flip="h"/>
+			<frame file="../resources/common/shank/right/run2.png" time="0.035" flip="h"/>
+			<frame file="../resources/common/shank/right/run3.png" time="0.035" flip="h"/>
+			<frame file="../resources/common/shank/right/run4.png" time="0.035" flip="h"/>
+			<frame file="../resources/common/shank/right/run5.png" time="0.035" flip="h"/>
+			<frame file="../resources/common/shank/right/run6.png" time="0.035" flip="h"/>
+			<frame file="../resources/common/shank/right/run7.png" time="0.035" flip="h"/>
+			<frame file="../resources/common/shank/right/run8.png" time="0.035" flip="h"/>
+			<frame file="../resources/common/shank/right/run9.png" time="0.035" flip="h"/>
+			<frame file="../resources/common/shank/right/run10.png" time="0.035" flip="h"/>
+			<frame file="../resources/common/shank/right/run11.png" time="0.035" flip="h"/>
+			<frame file="../resources/common/shank/right/run12.png" time="0.035" flip="h"/>
+			<frame file="../resources/common/shank/right/run13.png" time="0.035" flip="h"/>
+			<frame file="../resources/common/shank/right/run14.png" time="0.035" flip="h"/>
+			<frame file="../resources/common/shank/right/run15.png" time="0.035" flip="h"/>
+			<frame file="../resources/common/shank/right/run16.png" time="0.035" flip="h"/>
+			<frame file="../resources/common/shank/right/run17.png" time="0.035" flip="h"/>
+			<frame file="../resources/common/shank/right/run18.png" time="0.035" flip="h"/>
 		</animation>
+
+		<animation name="player_jump_right">
+			<frame file="../resources/common/shank/right/jump1.png" time="0.1"/>
+			<frame file="../resources/common/shank/right/jump2.png" time="0.02"/>
+			<frame file="../resources/common/shank/right/jump3.png" time="0.02"/>
+			<frame file="../resources/common/shank/right/jump4.png" time="0.02"/>
+			<frame file="../resources/common/shank/right/jump5.png" time="0.02"/>
+			<frame file="../resources/common/shank/right/jump6.png" time="0.02"/>
+			<frame file="../resources/common/shank/right/jump7.png" time="0.02"/>
+			<frame file="../resources/common/shank/right/jump8.png" time="0"/>
+		</animation>
+
+		<animation name="player_jump_left">
+			<frame file="../resources/common/shank/right/jump1.png" time="0.1" flip="h"/>
+			<frame file="../resources/common/shank/right/jump2.png" time="0.02" flip="h"/>
+			<frame file="../resources/common/shank/right/jump3.png" time="0.02" flip="h"/>
+			<frame file="../resources/common/shank/right/jump4.png" time="0.02" flip="h"/>
+			<frame file="../resources/common/shank/right/jump5.png" time="0.02" flip="h"/>
+			<frame file="../resources/common/shank/right/jump6.png" time="0.02" flip="h"/>
+			<frame file="../resources/common/shank/right/jump7.png" time="0.02" flip="h"/>
+			<frame file="../resources/common/shank/right/jump7.png" time="0" flip="h"/>
+		</animation>
+
+		<animation name="player_fall_right">
+			<frame file="../resources/common/shank/right/fall1.png" time="0.05"/>
+			<frame file="../resources/common/shank/right/fall2.png" time="0.02"/>
+			<frame file="../resources/common/shank/right/fall3.png" time="0.02"/>
+			<frame file="../resources/common/shank/right/fall4.png" time="0.02"/>
+			<frame file="../resources/common/shank/right/fall5.png" time="0.02"/>
+			<frame file="../resources/common/shank/right/fall6.png" time="0.02"/>
+			<frame file="../resources/common/shank/right/fall7.png" time="0.02"/>
+			<frame file="../resources/common/shank/right/fall8.png" time="0"/>
+		</animation>
+
+		<animation name="player_fall_left">
+			<frame file="../resources/common/shank/right/fall1.png" time="0.05" flip="h"/>
+			<frame file="../resources/common/shank/right/fall2.png" time="0.02" flip="h"/>
+			<frame file="../resources/common/shank/right/fall3.png" time="0.02" flip="h"/>
+			<frame file="../resources/common/shank/right/fall4.png" time="0.02" flip="h"/>
+			<frame file="../resources/common/shank/right/fall5.png" time="0.02" flip="h"/>
+			<frame file="../resources/common/shank/right/fall6.png" time="0.02" flip="h"/>
+			<frame file="../resources/common/shank/right/fall7.png" time="0.02" flip="h"/>
+			<frame file="../resources/common/shank/right/fall8.png" time="0" flip="h"/>
+		</animation>
+
 	</resources>
 
 	<levels>

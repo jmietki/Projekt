@@ -4,19 +4,22 @@
 import pyglet
 from pyglet.gl import *
 
-import os.path
+import sys, os
 
 from base.configuration import *
 from base.physicalobject import *
 from base.player import *
 from base.resources import *
 from base.level import *
-from base.camera import *
+from base.camara import *
 
 class Game(pyglet.window.Window):
 	"""Główna klasa aplikacji"""
 
 	def __init__(self):
+
+		head, tail = os.path.split(__file__)
+		sys.path.append(head)
 
 		# self.config jest zarezerwowane przez pyglet.window.Window
 		# więc musi być inna nazwa - game_config
@@ -28,9 +31,7 @@ class Game(pyglet.window.Window):
 		else:
 			super(Game, self).__init__(self.game_config.display_width, 
 				self.game_config.display_height)
-		
-		# ukrycie myszki
-		self.set_exclusive_mouse(True)
+			#self.set_exclusive_mouse(True)
 
 		# załadowanie współdzielonych zasobów gry
 		self.game_resources = Resources()
@@ -39,27 +40,28 @@ class Game(pyglet.window.Window):
 		# utworzenie gracza 
 		self.player = Player(self.game_resources)
 		self.player.x = 100
-		self.player.y = 250
+		self.player.y = 500
 
 		# zarejestrowanie playera jako odbierającego eventy
 		self.push_handlers(self.player)
 
 		# utworzenie kamery i powiązanie jej z graczem
 		self.camera = FlatCamera(self.width, self.height)
-		# powiazanie ruchu kamery z ruchem gracza
 		self.camera.bind(self.player)
+		self.camera.y = 200
 
 		# utworzenie mapy
-		self.level = Level(self.game_resources)
+		self.level = Level(self.game_resources, self.player, self.camera)
 
 		# przekazanie graczowi informacji o obiektach kolizyjnych,
 		self.player.collision_objects = self.level.collision_objects
+
 
 		# odświeżanie gry z częstotliwością 1/120
 		pyglet.clock.schedule_interval(self.update, 1/120.0)
 
 		# numer wersji i fps ;)
-		self.label = pyglet.text.Label("v0.03")
+		self.label = pyglet.text.Label("v0.09")
 		self.label.x = self.width - 50
 		self.label.y = 10
 		self.fps_display = pyglet.clock.ClockDisplay()
@@ -67,29 +69,33 @@ class Game(pyglet.window.Window):
 
 	def reload_level(self, dt):
 		try:
-			level = Level(self.game_resources)
+			level = Level(self.game_resources, self.player, self.camera)
 		except Exception, e:
+			print e
 			pass
 		else:
 			self.level = level
 			self.player.collision_objects = self.level.collision_objects
-			pyglet.clock.unschedule(self.level.animate)
 
 
 	def update(self, dt):
 		# grawitacja
-		self.player.velocity_y -= 1500*dt
-
-		# śmierć playera - jak wypadnie pod mape
-		if self.player.y + self.player.height < 0:
-			self.player.x = 100
-			self.player.y = 250
+		self.player.velocity_y -= 1800*dt
 
 		self.player.update(dt)
-		
+
+		# aktualizacja poziomu
+		self.level.update(dt)
+
+		if self.player.y < -1500:
+			self.player.x = 100
+			self.player.y = 500
+			self.camera.y = 0
+			self.camera.x = 0
+
 
 	def on_draw(self):
-		pyglet.clock.tick()
+		#pyglet.clock.tick()
 		self.clear()
 
 		# update kamery
@@ -115,10 +121,14 @@ class Game(pyglet.window.Window):
 				print "Dynamiczne ładowanie mapy wyłączone"
 			else: 
 				pyglet.clock.schedule_interval(self.reload_level, 1)
-				pyglet.clock.unschedule(self.level.animate)
 				self.live_level_building = True
 				print "Dynamiczne ładowanie mapy włączone"
 
+		if symbol == pyglet.window.key.K:
+			self.player.x = 100
+			self.player.y = 250
+			self.camera.y = 0
+			self.camera.x = 0
 		elif symbol == pyglet.window.key.ESCAPE or symbol == pyglet.window.key.Q:
 			pyglet.app.exit()
 

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import pyglet 
-import os.path
 
 class Resources(object):
 	"""docstring for Resources"""
@@ -28,7 +27,12 @@ class Resources(object):
 			r_type = resource['type'].lower()
 			
 			if r_type == 'image':
-				self.images[resource['name']] = pyglet.image.load(os.path.normpath(path+resource['file']))
+				self.images[resource['name']] = pyglet.image.load(path+resource['file'])
+				if 'flip' in resource:
+					self.images[resource['name']].anchor_x = self.images[resource['name']].width/2
+					self.images[resource['name']] = self.images[resource['name']].texture.get_transform(True, False, 0)
+					self.images[resource['name']].anchor_x = 0
+				
 			
 			if r_type == 'sound':
 				pass
@@ -39,8 +43,16 @@ class Resources(object):
 
 				for frame in resource['frames']:
 					# utworzenie klatki animacji
-					image = pyglet.image.load(os.path.normpath(path+frame['file']))
-					frame = pyglet.image.AnimationFrame(image, float(frame['time'])) 
+					image = pyglet.image.load(path+frame['file'])
+
+					if 'flip' in frame:
+						image.anchor_x = image.width/2
+						image = image.texture.get_transform(True, False, 0)
+						image.anchor_x = 0
+					if float(frame['time']) == 0:
+						frame = pyglet.image.AnimationFrame(image, None) 
+					else:
+						frame = pyglet.image.AnimationFrame(image, float(frame['time'])) 
 
 					# dodanie do listy klatek
 					animation_frames.append(frame)
