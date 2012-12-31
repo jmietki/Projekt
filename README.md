@@ -52,11 +52,11 @@ W takim przypadku należy przełączyć grę w tryb pełnoekranowy.
 
 W pliku game/game.xml należy zmienić linijkę
 	
-		<fullscreen value="false"/>
+		<fullscreen value="false" />
 
 na 
 
-		<fullscreen value="true"/>
+		<fullscreen value="true" />
 
 
 ## Główne TO-DO
