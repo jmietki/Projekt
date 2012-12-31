@@ -20,16 +20,16 @@ Wymaga interpretera Python w wersji 2.7.3. Pod gałęzią 3.x gra nie była test
 
 1. Zainstaluj Python z gałęzi 2.7.x 
     
-    $ sudo apt-get install python
+    	$ sudo apt-get install python
     
 2. Zainstaluj biblioteki pyglet
     
-    $ sudo apt-get install python-pyglet
+    	$ sudo apt-get install python-pyglet
     
 3. [Pobierz] i rozpakuj projekt
 4. Nadaj uprawnienia uruchomiania dla pliku game/main.py
     
-    $ chmod +x scieżka_do_projektu/game/main.py
+    	$ chmod +x scieżka_do_projektu/game/main.py
     
 [Pobierz]: https://github.com/jmietki/Projekt/archive/master.zip
 
