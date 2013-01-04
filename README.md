@@ -1,6 +1,6 @@
 # Spickey The Game - Projekt zaliczeniowy
 
-Gra platformowa polegająca na pokonaniu planszy naszpikowanej zabójczymi półapkami w jak najkrótszym czasie. 
+Gra platformowa polegająca na pokonaniu planszy naszpikowanej zabójczymi pułapkami w jak najkrótszym czasie. 
 
 ![Screenshot](http://eros.vlo.gda.pl/~spiroz/projekt/screen.png)
 
