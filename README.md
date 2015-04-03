@@ -1,66 +1,50 @@
-# Spickey The Game - Projekt zaliczeniowy
+# Spickey The Game - End of term project assignment
 
-Gra platformowa polegająca na pokonaniu planszy naszpikowanej zabójczymi pułapkami w jak najkrótszym czasie. 
+Platform game consisting in going through level studded with deadly traps as quick as possible. 
 
 ![Screenshot](http://eros.vlo.gda.pl/~spiroz/projekt/screen.png)
 
 
-## Uwagi
+## Installation
 
-Jest to wczesna wersja projektu. Kolizja zrealizowana jest z wykorzystaniem techniki bounding box, w zwiazku z czym  
-obiekty reagują ze sobą wcześniej niż wynika to z bitmapy.
-
-
-## Instalacja
-
-Projekt napisany został w języku Python z wykorzystaniem biblioteki pyglet. 
-Wymaga interpretera Python w wersji 2.7.3. Pod gałęzią 3.x gra nie była testowana.
+The project is written in Python using pyglet library.
+Requires Python interpreter, version 2.7.3. Under the 3.x branch, the game has not been tested.
 
 ### Linux (dystrybucje oparte na debianie)
 
-1. Zainstaluj Python z gałęzi 2.7.x 
+1. Install Python 2.7.x branch
     
     	$ sudo apt-get install python
     
-2. Zainstaluj bibliotekę pyglet
+2. Install the pyglet library 
     
     	$ sudo apt-get install python-pyglet
     
-3. [Pobierz] i rozpakuj projekt
-4. Nadaj uprawnienia uruchomiania dla pliku game/main.py
+3. [Download] and unpack the project
+4. Give the launch permissions for the file game/main.py
     
-    	$ chmod +x scieżka_do_projektu/game/main.py
+    	$ chmod +x project_path/game/main.py
 
-5. Uruchom aplikacje
+5. Run the application
 		
-		$ cd scieżka_do_projektu/game/
+		$ cd project_path/game/
 		$ ./main.py
     
 [Pobierz]: https://github.com/jmietki/Projekt/archive/master.zip
 
 ### Windows 
 
-Obecnie platforma Windows nie jest wspierana.
+Windows is not supported. This is a Python so there's a chance that it will works.
 
-Oficjalna wersja do oceny zostanie wydana w wersji na Windows, prawdopodobnie w formie paczki .exe
-przygotowanej z pomocą py2exe.
+## Known Issues
 
-## Znane problemy
+Apart from a number of problems associated with the early version, there may be a problem with a very low performance in windowed mode under Ubuntu Unity.
+In this case, switch the game in full screen mode.. 
 
-Pomijając liczne problemy związane z wczesną wersją, może wystąpić problem z bardzo niską wydajnością w trybie okienkowym pod Ubuntu Unity.
-W takim przypadku należy przełączyć grę w tryb pełnoekranowy. 
-
-W pliku game/game.xml należy zmienić linijkę
+In the game/game.xml need to change the line
 	
 		<fullscreen value="false" />
 
-na 
+to 
 
 		<fullscreen value="true" />
-
-
-## Główne TO-DO
-
-- Kolizja per pixel
-- Rozliczanie wygranej/przegranej
-- Proste menu
