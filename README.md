@@ -2,7 +2,7 @@
 
 Platform game consisting in going through level studded with deadly traps as quick as possible. 
 
-![Screenshot](http://eros.vlo.gda.pl/~spiroz/projekt/screen.png)
+![Screenshot](http://panel.smartlamp.eu/screen.png)
 
 
 ## Installation
